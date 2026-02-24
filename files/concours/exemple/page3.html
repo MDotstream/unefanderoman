@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Une_fan_de_roman</title>
+        <link rel="icon" href="../../../image/icon.png">
+        <link rel="stylesheet" href="../../../style.css" />
+    </head>
+    <body>
+        <section id="nav-reader">
+            <div class="text-size-controls">
+                <button class="btn btn-size" onclick="decreaseTextSize()">A−</button>
+                <span id="text-size-display">100%</span>
+                <button class="btn btn-size" onclick="increaseTextSize()">A+</button>
+            </div>
+        </section>
+        <section id="main-content-reader">
+            <p class="subtitle">END</p>
+        </section>
+        <section class="hero">
+                <button class="btn btn-secondary" onclick="window.location.href='page2.html'">Page précédente</button>
+                <button class="btn btn-primary" onclick="window.location.href='../../../concours/creation-de-livre.html'">Revenir a la page d'acceuil</button>
+        </section>
+    </body>
+    <script>
+        let currentTextSize = 100;
+        const minSize = 50;
+        const maxSize = 200;
+        const sizeStep = 10;
+
+        function updateTextSize() {
+            const mainContent = document.getElementById('main-content-reader');
+            mainContent.style.fontSize = currentTextSize + '%';
+            document.getElementById('text-size-display').textContent = currentTextSize + '%';
+            localStorage.setItem('textSize', currentTextSize);
+        }
+
+        function increaseTextSize() {
+            if (currentTextSize < maxSize) {
+                currentTextSize += sizeStep;
+                updateTextSize();
+            }
+        }
+
+        function decreaseTextSize() {
+            if (currentTextSize > minSize) {
+                currentTextSize -= sizeStep;
+                updateTextSize();
+            }
+        }
+
+        // Charger la taille sauvegardée au chargement de la page
+        window.addEventListener('load', function() {
+            const savedSize = localStorage.getItem('textSize');
+            if (savedSize) {
+                currentTextSize = parseInt(savedSize);
+                updateTextSize();
+            }
+        });
+    </script>
+</html>
