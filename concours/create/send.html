@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Une_fan_de_roman</title>
+        <link rel="icon" href="../../image/icon.png">
+        <link rel="stylesheet" href="../../style.css" />
+    </head>
+    <body>
+        <p class="title" id="title-sendhtml">Votre formulaire a été envoyé avec succès !</p>
+        <p class="subtitle" id="title-sendhtml">Merci pour votre participation au concours !</p>
+        <br><br>
+        <p class="num-sendhtml">Numéro de l'envoi <strong>${data.id}</strong></p>
+        <div class="buttons-sendhtml">
+            <button class="btn btn-primary" onclick="window.location.href='../../concours.html'">Revenir à la page des concours</button>
+      </div>
+        </div>
+        <br><br>
+        <p class="title" id="title-sendhtml">Envie de voire a quoi ressemble votre livre ?</p>
+        <div class="read-sendhtml">
+            <p class="title-textread-sendhtml">Titre</p>
+            <p class="text-textread-sendhtml">Texte</p>
+        </div>
+        <!--Connexion à Supabase-->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+        <script>
+            const SUPABASE_URL = "https://falvqjhgsksffhdjdmcn.supabase.co";
+            const SUPABASE_KEY = "sb_publishable_YK4zRP2nn0K8gkvAyX3_0w_JAVwVf5T";
+
+            const supabaseClient = window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+        </script>
+    </body>
+</html>
