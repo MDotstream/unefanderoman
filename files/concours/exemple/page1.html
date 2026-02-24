@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Une_fan_de_roman</title>
+        <link rel="icon" href="../../../image/icon.png">
+        <link rel="stylesheet" href="../../../style.css" />
+    </head>
+    <body>
+        <section id="nav-reader">
+            <div class="text-size-controls">
+                <button class="btn btn-size" onclick="decreaseTextSize()">A−</button>
+                <span id="text-size-display">100%</span>
+                <button class="btn btn-size" onclick="increaseTextSize()">A+</button>
+            </div>
+        </section>
+        <section id="main-content-reader">
+            <p class="title">Exemple</p>
+            <br><br>
+            <p class="subtitle">Chapitre 1</p>
+            <br>
+            <p class="info-text">"La silhouette a bougé. Trop vite.<br><br>J’ai à peine eu le temps d’ouvrir la portière qu’une explosion a déchiré le silence. Le pare-brise a volé en éclats, la détonation me vrillant les oreilles. Je me suis jeté au sol par réflexe, les mains dans la boue, le cœur prêt à sortir de ma poitrine.<br><br>— Cours ! a hurlé une voix derrière moi.<br><br>Je n’ai pas cherché à comprendre.<br><br>Je me suis relevé d’un bond et j’ai foncé dans les arbres. Les branches me fouettaient le visage, le sol glissait sous mes pieds, mais je continuais. Derrière moi, ça tirait encore. Sec. Précis. Les balles frappaient les troncs à quelques centimètres de ma tête.<br><br>Un éclair blanc. Une seconde explosion. La voiture a pris feu.<br><br>J’ai plongé derrière un rocher au moment où quelque chose s’est écrasé là où je me trouvais une seconde plus tôt. Un homme. Ou plutôt une masse noire, armée, rapide, entraînée. Il a roulé au sol et s’est relevé instantanément.<br><br>Je n’avais plus le choix.<br><br>J’ai arraché une pierre du sol et l’ai lancée de toutes mes forces. Elle a touché son arme. Un claquement métallique. Une fraction de seconde gagnée.<br><br>
+            <button class="btn btn-primary" onclick="window.location.href='page2.html'">Page suivante</button>
+        </section>
+    </body>
+    <script>
+        let currentTextSize = 100;
+        const minSize = 50;
+        const maxSize = 200;
+        const sizeStep = 10;
+
+        function updateTextSize() {
+            const mainContent = document.getElementById('main-content-reader');
+            mainContent.style.fontSize = currentTextSize + '%';
+            document.getElementById('text-size-display').textContent = currentTextSize + '%';
+            localStorage.setItem('textSize', currentTextSize);
+        }
+
+        function increaseTextSize() {
+            if (currentTextSize < maxSize) {
+                currentTextSize += sizeStep;
+                updateTextSize();
+            }
+        }
+
+        function decreaseTextSize() {
+            if (currentTextSize > minSize) {
+                currentTextSize -= sizeStep;
+                updateTextSize();
+            }
+        }
+
+        // Charger la taille sauvegardée au chargement de la page
+        window.addEventListener('load', function() {
+            const savedSize = localStorage.getItem('textSize');
+            if (savedSize) {
+                currentTextSize = parseInt(savedSize);
+                updateTextSize();
+            }
+        });
+    </script>
+</html>
