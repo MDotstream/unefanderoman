@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concours - Une_fan_de_roman</title>
+  <link rel="icon" href="../image/icon.png">
+ 
+  <!-- Lien vers le fichier CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<main id="main-content">
+
+  <!-- BARRE DE NAVIGATION -->
+ <header>
+    <div class="logo">
+      <img src="../image/logo.png" alt="Logo Une_fan_de_roman" />
+      <span>Une_fan_de_roman</span>
+    </div>
+
+    <nav id="main-nav">
+      <a href="../index.html">Accueil</a>
+      <a href="../msg-ano.html">Message anonyme</a>
+      <a href="../admins.html">Les admin</a>
+      <a href="../info.html">En savoir plus</a>
+      <a href="concours.html" class="btn-concours-nav">Concours</a>
+      <a href="https://whatsapp.com/channel/0029VaYG2jx96H4KOnV0Vb1G" class="btn-nav">S'abonner</a>
+    </nav>
+    <button id="menu-btn" style="display:none;font-size:2.2rem;background:none;border:none;color:white;cursor:pointer;" aria-label="Ouvrir le menu">☰</button>
+  </header>
+
+  <section class="section">
+            <p class="title">Un concours est en cours !</p>
+            <br>
+            <p class="subtitle">Le but du concours ?</p>
+            <p class="info-text">- Le but est simple tu écris une histoire✍️ (comme fait la proprio)<br>- Dans cette histoire tu peux raconter tout ce que tu veux 😀✨ (une scène de bagarre 😈, une scène d'amour 🥰, une scène de meutre 🔪, enfin tout ➕)<br>- Le livre ne doit pas être long (30 pages max📜) <br>- Vos livres seront postés sur la chaîne ⛓️‍💥 📢 et on procèdera à un vote 🗳️. Celui qui aura le plus de votes aura gagné 🥇(le vote des admin conte double 2️⃣)</p>
+            <br>
+            <p class="info-text"><strong>Exemple d'histoire</strong></p>
+            <section class="btn-livre-exemple">
+              <button class="btn btn-primary" onclick="window.location.href='../files/concours/exemple/page1.html'">Lire le livre d'exemple</button>
+            </section>
+            <br><br>
+            <p class="subtitle">Comment participer ?</p>
+            <p class="info-text">Ecrit ton texte via ton bloc-note ou autre application puis copier/coller le texte<br>sur la page dédier</p>
+            <section class="btn-livre-exemple">
+              <button class="btn btn-secondary" onclick="window.location.href='create/studio.html'">Envoyez mon texte</button>
+            </section>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <p>© 2026 Une_fan_de_roman — Tous droits réservés</p>
+    <p>Développé par Malo Dot</p>
+  </footer>
+</main>
+
+<script>
+// Fonction pour détecter si c'est un mobile
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function handleNavDisplay() {
+  const nav = document.getElementById('main-nav');
+  const menuBtn = document.getElementById('menu-btn');
+  if (isMobile()) {
+    nav.style.display = 'none';
+    menuBtn.style.display = 'block';
+  } else {
+    nav.style.display = '';
+    menuBtn.style.display = 'none';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleNavDisplay);
+window.addEventListener('resize', handleNavDisplay);
+
+document.getElementById('menu-btn').onclick = function() {
+  window.location.href = 'creation-de-livre.html?nav';
+};
+</script>
+
+<script>
+  // Montre le menu mobile si ?nav dans l'URL
+  if (window.location.search.includes('nav')) {
+    // Enlève le contenu principal et le padding pour s'assurer que le menu est visible
+    const main = document.getElementById('main-content');
+    if (main) main.remove();
+    document.body.style.paddingTop = '0';
+    // Injecte le menu en haut du body et s'assure qu'il occupe tout l'écran
+    document.body.insertAdjacentHTML('afterbegin', `
+      <section id="page-nav" style="display:block;min-height:100vh;padding-top:40px;">
+        <header>
+          <img src="../image/logo.png" alt="Logo Une_fan_de_roman" style="width:40px;height:40px;vertical-align:middle;margin-right:10px;border-radius:10px;" />
+          <span style="font-size:1.5rem;color:white;vertical-align:middle;">Une_fan_de_roman</span>
+        </header>
+        <h1>Menu</h1>
+        <a href="../index.html">Accueil</a>
+        <a href="../msg-ano.html">Message anonyme</a>
+        <a href="../admins.html">Les admins</a>
+        <a href="../info.html">En savoir plus</a>
+        <a href="../concours.html" class="btn-concours-nav">Concours</a>
+        <a href="https://whatsapp.com/channel/0029VaYG2jx96H4KOnV0Vb1G" class="btn-abo-navtel">S’abonner</a>
+      </section>
+    `);
+    // S'assure que le scroll revient en haut
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
